@@ -8,4 +8,9 @@ class BandsController < ApplicationController
       @band = Band.find_by_id(params[:id])
       render :show
    end
+
+   def new
+      @band = Band.new
+      render :new
+   end 
 end

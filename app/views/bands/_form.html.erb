@@ -1,0 +1,8 @@
+<form action="<%= band.persisted? ? band_url(band) : bands_url %>" method="post">
+   <% #if band.persisted? do %>
+      <!--<input type="hidden" name="_method" value="patch">-->
+   <% #end %>
+   <label for="band_name">Name:</label>
+   <input id="band_name" type="text" name="band[name]" value="<%= band.name %>">
+   <input type="submit">
+</form>
