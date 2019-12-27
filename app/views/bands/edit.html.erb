@@ -1,0 +1,8 @@
+<h1>Edit <%= @band.name %>'s Profile</h1>
+
+<%= render"shared/errors", errors: flash[:errors] if flash[:errors] %>
+<%= render "form", band: @band %>
+
+<% content_for :footer do %>
+   <%= render "nav", record_directory: [@band, "Edit"] %>
+<% end %>
