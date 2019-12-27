@@ -1,0 +1,11 @@
+<h1><%= @band.name %></h1>
+
+<% content_for :footer do %>
+<h5>Navigation:</h5>
+   <nav>
+      <ul>
+         <li><%= link_to "Bands", bands_url%></li>
+         <li><%= @band.name %></li>
+      </ul>
+   </nav>
+<% end %>
