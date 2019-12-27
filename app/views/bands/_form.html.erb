@@ -2,6 +2,7 @@
    <% if band.persisted? %>
       <input type="hidden" name="_method" value="patch">
    <% end %>
+   <%= auth_token %>
    <label for="band_name">Name:</label>
    <input id="band_name" type="text" name="band[name]" value="<%= band.name %>">
    <input type="submit">
