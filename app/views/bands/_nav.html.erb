@@ -1,0 +1,13 @@
+<h5>Navigation:</h5>
+<nav>
+   <ul>
+      <li><%= link_to "Bands", bands_url %></li>
+      <% record_directory.each do |link_object| %>
+         <% if link_object.is_a?(String) %>
+            <li><%= link_object %></li>
+         <% else %>
+            <li><%= link_to link_object.name, link_object%></li>
+         <% end %>
+      <% end %>
+   </ul>
+</nav>
