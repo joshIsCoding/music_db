@@ -39,6 +39,12 @@ class BandsController < ApplicationController
       end
    end
 
+   def destroy
+      @band = Band.find_by_id(params[:id])
+      @band.destroy
+      redirect_to bands_url
+   end
+
    private
    def band_params
       params.require(:band).permit(:name)
