@@ -5,4 +5,9 @@ class AlbumsController < ApplicationController
       render :show
    end
 
+   def new
+      @album = Album.new(artist_id: params[:artist_id])
+      @artists = Artist.all
+      render :new
+   end
 end

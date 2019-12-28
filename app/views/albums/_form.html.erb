@@ -1,0 +1,40 @@
+<form method="<%= album.persisted? ? album_url(album) : albums_url %>" action="post">
+<% if album.persisted? %>
+   <input type="hidden" name="_method" value="patch">
+<% end %>
+   <%= auth_token %>
+   <label for="album_title">Title:</label>
+   <input id="album_title" type="text" name="album[title]" value="<%= album.title %>">
+
+   <label for="album_artist">Artist:</label>
+   <select id="album_artist" name="album[artist_id]">
+      <% artists.each do |artist| %>
+         <option value="<%= artist.id %>" <%= "selected" if album.artist_id == artist.id %>>
+            <%= artist.name %>
+         </option>
+      <% end %>
+   </select>
+
+   <label for="album_year">Year:</label>
+   <input id="album_year" type="number" name="album[year]" value="album.year" min="1850" max="2100">
+
+   <label for="album_type">Type:</label>
+   <select id="album_type" name="album[album_type]">
+      <% %w(EP LP Compilation).each do |album_type| %>
+         <option value="<%= album_type %>" <%= "selected" if album.persisted? && album.album_type == album_type %>>
+            <%= album_type %>
+         </option>
+      <% end %>
+   </select>
+
+   Recording:
+   <label for="recording-studio">Studio</label>
+   <input id="recording-studio" type="radio" name="album[live?]" value="false" <%= "checked" unless album.live? %>>
+
+   <label for="recording-live">Live</label>
+   <input id="recording-live" type="radio" name="album[live?]" value="true" <%= "checked" if album.live? %>>
+   <input type="submit">
+   <% if album.persisted? %>
+      <input type ="reset">
+   <% end %>
+</form>
