@@ -22,6 +22,12 @@ class AlbumsController < ApplicationController
       end
    end
 
+   def edit
+      @album = Album.find_by_id(params[:id])
+      @artists = Artist.all
+      render :edit
+   end
+   
    private
    def album_params
       params.require(:album).permit(:title, :artist_id, :year, :album_type, :live?)
