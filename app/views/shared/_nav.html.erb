@@ -5,8 +5,10 @@
       <% record_directory.each do |link_object| %>
          <% if link_object.is_a?(String) %>
             <li><%= link_object %></li>
-         <% else %>
+         <% elsif link_object.is_a?(Artist) %>
             <li><%= link_to link_object.name, link_object%></li>
+         <% else %>
+            <li><%= link_to link_object.title, link_object%></li>
          <% end %>
       <% end %>
    </ul>
