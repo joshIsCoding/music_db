@@ -27,7 +27,19 @@ class AlbumsController < ApplicationController
       @artists = Artist.all
       render :edit
    end
-   
+
+   def update
+      @album = Album.find_by_id(params[:id])
+      if @album.update_attributes(album_params)
+         redirect_to album_url(@album)
+      else
+         flash.now[:errors] = @album.errors.full_messages
+         @artists = Artist.all
+         render :edit
+      end
+   end
+
+
    private
    def album_params
       params.require(:album).permit(:title, :artist_id, :year, :album_type, :live?)
