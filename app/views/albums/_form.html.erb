@@ -1,4 +1,4 @@
-<form method="<%= album.persisted? ? album_url(album) : albums_url %>" action="post">
+<form action="<%= album.persisted? ? album_url(album) : albums_url %>" method="post">
 <% if album.persisted? %>
    <input type="hidden" name="_method" value="patch">
 <% end %>
