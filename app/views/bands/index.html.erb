@@ -1,7 +1,7 @@
-<h1>Bands Index</h1>
+<h1>Artists Index</h1>
 
 <ol>
-   <% @bands.each do |band| %>
-      <li><%= link_to band.name, band_url(band) %></li>
+   <% @artists.each do |artist| %>
+      <li><%= link_to artist.name, artist_url(artist) %></li>
    <% end %>
 </ol>

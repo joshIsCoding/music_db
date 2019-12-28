@@ -1,9 +1,9 @@
-<form action="<%= band.persisted? ? band_url(band) : bands_url %>" method="post">
-   <% if band.persisted? %>
+<form action="<%= artist.persisted? ? artist_url(artist) : artists_url %>" method="post">
+   <% if artist.persisted? %>
       <input type="hidden" name="_method" value="patch">
    <% end %>
    <%= auth_token %>
-   <label for="band_name">Name:</label>
-   <input id="band_name" type="text" name="band[name]" value="<%= band.name %>">
+   <label for="artist_name">Name:</label>
+   <input id="artist_name" type="text" name="artist[name]" value="<%= artist.name %>">
    <input type="submit">
 </form>
