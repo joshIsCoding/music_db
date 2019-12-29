@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
    # skip filter at individual controller level for certain essential actions 
    before_action :require_login
+   helper_method :logged_in?
    def current_user
       return nil unless session[:session_token]
-      @current_user ||= User.find_by(session[:session_token])
+      @current_user ||= User.find_by(session_token: session[:session_token])
    end
 
    def logged_in?
