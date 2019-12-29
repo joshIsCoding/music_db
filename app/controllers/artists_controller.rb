@@ -1,6 +1,9 @@
 class ArtistsController < ApplicationController
    def index
-      @artists = Artist.all.order(:name)
+      @artists_album_count = Artist.left_outer_joins(:albums)
+      .select("artists.*, COUNT(albums.id) AS album_count")
+      .group("artists.id")
+      .order(:name)
       render :index
    end
 
