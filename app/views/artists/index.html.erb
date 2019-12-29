@@ -1,7 +1,21 @@
 <h1>Artists Index</h1>
-
-<ol>
-   <% @artists.each do |artist| %>
-      <li><%= link_to artist.name, artist_url(artist) %></li>
-   <% end %>
-</ol>
+<p><%= link_to "Create", new_artist_url %> a new artist</p>
+<table>
+   <thead>
+      <% ["Artist", "Albums in Database", "Contributing Users"].each do |heading| %>
+         <th><%= heading %></th>
+      <% end %>
+   </thead>
+   <tbody>
+      <% @artists_album_count.each do |artist| %>
+         <tr>
+            <td><%= link_to artist.name, artist_url(artist) %></td>
+            <td><%= artist.album_count %></td>
+            <td>tbc</td>
+         </tr>
+      <% end %>
+   </tbody>
+   <tfoot>
+      <td colspan="3"><%= link_to "Add new artist", new_artist_url %></td>
+   </tfoot>
+</table>
