@@ -1,0 +1,25 @@
+<h1><%= @track.title %></h1>
+<h3>from <%= link_to @track.album.title, @track.album %>
+ by <%= link_to @track.artist.name, @track.artist %></h3>
+
+<table>
+   <tr>
+      <th>Album:</th>
+      <td><%= @track.album.title %></td>
+   </tr>
+   <tr>
+      <th>Number:</th>
+      <td><%= @track.ord %></td>
+   </tr>
+   <tr>
+      <th>Bonus Track?</th>
+      <td><%= @track.bonus? ? "Yes" : "No"  %></td>
+   </tr>
+</table>
+
+<h3>Lyrics</h3>
+<%= @track.lyrics %>
+
+<% content_for :footer do %>
+   <%= render "shared/nav", record_directory: [@track.artist, @track.album, @track] %>
+<% end %>
