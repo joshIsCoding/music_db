@@ -14,6 +14,29 @@
       <td><%= @album.live? ? "Live" : "In the Studio" %></td>
    </tr>
 </table>
+<h3>Track Listing - <%= link_to "add a track", new_album_track_url(@album) %></h3>
+<table>
+   <thead>
+      <% ["#", "Title","Bonus?", "Lyrics"].each do |heading| %>
+         <th><%= heading %></th>
+      <% end %>
+   </thead>
+   <tbody>
+      <% @album.tracks.order(:ord).each do |track| %>
+         <tr>
+            <td><%= track.ord %></td>
+            <td><%= link_to track.title, track %></td>
+            <td><%= "&#10004;" if track.bonus? %></td>
+            <td><%= lyric_trim(track.lyrics) %></td>
+            <td><%= button_to "Edit", edit_track_url(track), method: "get" %></td>
+            <td><%= button_to "Delete", track_url(track), method: "delete" %></td>
+         </tr>
+      <% end %>
+   </tbody>
+   <tfoot>
+      <td colspan="4"><%= link_to "Add new track", new_album_track_url(@album) %>
+   </tfoot>
+</table>
 
 <% content_for :footer do %>
    <%= render "shared/nav", record_directory: [@artist, @album] %>
