@@ -1,5 +1,5 @@
 <h1><%= @album.title %></h1>
-<h3>by <%= link_to @artist.name, @artist %>
+<h3>by <%= link_to @artist.name, @artist %></h3>
 
 <% content_for :footer do %>
    <%= render "shared/nav", record_directory: [@artist, @album] %>
