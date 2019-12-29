@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
    def create
-      user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-      if user
-         login_user!(user)
-         render "users/show"
+      @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
+      if @user
+         login_user!(@user)
+         redirect_to artists_url
       else
          flash.now[:errors] ||= []
          flash.now[:errors] << "Those were invalid user credentials. Please try again"
