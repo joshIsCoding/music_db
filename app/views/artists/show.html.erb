@@ -1,5 +1,27 @@
 <h1><%= @artist.name %></h1>
-
+<h3>Albums - <%= link_to "add new", new_artist_album_url(@artist) %></h3>
+<table>
+   <thead>
+      <% %w(Title Year Type Recording). each do |field_heading| %>
+         <th><%= field_heading %></th>
+      <% end %>
+   </thead>
+   <tbody>
+      <% @artist.albums.order(:year).each do |album| %>
+         <tr>
+            <td><%= link_to album.title, album %></td>
+            <td><%= album.year %></td>
+            <td><%= album.album_type %></td>
+            <td><%= album.live? ? "Live" : "Studio" %></td>
+            <td><%= button_to "Edit", edit_album_url(album), method: "get" %></td>
+            <td><%= button_to "Delete", album, method: "delete" %></td>
+         </tr>
+      <% end %>
+   </tbody>
+   <tfoot>
+      <td colspan="4"><%= link_to "Add new album", new_artist_album_url(@artist) %></td>
+   </tfoot>
+</table>
 <% content_for :footer do %>
    <%= render "shared/nav", record_directory: [@artist] %>
 <% end %>
