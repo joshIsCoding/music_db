@@ -1,0 +1,6 @@
+<h1>Add a New Track</h1>
+<%= render "form", track: @track, artist_albums: @track.artist.albums %>
+
+<% content_for :footer do %>
+   <%= render "shared/nav", record_directory: [@track.artist, @track.album, "New Track"] %>
+<% end %>
