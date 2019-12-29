@@ -3,9 +3,10 @@
    <ul>
       <li><%= link_to "Artists", artists_url %></li>
       <% record_directory.each do |link_object| %>
-         <% if link_object.is_a?(String) %>
+         <% case link_object %>
+         <% when String %>
             <li><%= link_object %></li>
-         <% elsif link_object.is_a?(Artist) %>
+         <% when Artist %>
             <li><%= link_to link_object.name, link_object%></li>
          <% else %>
             <li><%= link_to link_object.title, link_object%></li>
