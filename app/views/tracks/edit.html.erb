@@ -1,0 +1,7 @@
+<h1>Edit '<%= @track.title %>'</h1>
+<%= render "shared/errors", errors: flash[:errors] if flash[:errors] %>
+<%= render "form", track: @track, artist_albums: @track.artist.albums %>
+
+<% content_for :footer do %>
+   <%= render "shared/nav", record_directory: [@track.artist, @track.album, @track, "Edit"] %>
+<% end %>

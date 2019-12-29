@@ -9,7 +9,6 @@ class TracksController < ApplicationController
       render :new
    end
 
-
    def create
       @track = Track.new(track_params)
       if @track.save
@@ -19,6 +18,11 @@ class TracksController < ApplicationController
          render :new
       end
    end
+
+   def edit
+      @track = Track.find_by_id(params[:id])
+      render :edit
+   end   
 
    private
    def track_params
