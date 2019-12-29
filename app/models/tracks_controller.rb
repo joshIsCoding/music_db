@@ -22,7 +22,17 @@ class TracksController < ApplicationController
    def edit
       @track = Track.find_by_id(params[:id])
       render :edit
-   end   
+   end 
+   
+   def update
+      @track = Track.find_by_id(params[:id])
+      if @track.update_attributes(track_params)
+         redirect_to track_url(@track)
+      else
+         flash.now[:errors] = @track.errors.full_messages
+         render :edit
+      end
+   end
 
    private
    def track_params
