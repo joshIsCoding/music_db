@@ -2,14 +2,14 @@
    <% if track.persisted? %>
       <input type="hidden" name="_method" value="patch">
    <% end %>
-
+   <%= auth_token %>
    <label for="track_title">Title:</label>
    <input id="track_title" type="text" name="track[title]" value="<%= track.title %>">
 
    <label for ="track_album">Album:</label>
-   <select id="track_album">
+   <select id="track_album" name="track[album_id]">
       <% artist_albums.each do |album| %>
-         <option name="track[album_id]" value="<%= album.id %>"
+         <option value="<%= album.id %>"
          <%= "selected" if track.album_id == album.id %>>
             <%= album.title %>
          </option>
@@ -22,16 +22,19 @@
 
    <label for ="track_bonus_reg">Track Type:</label>
    <label for ="track_bonus_reg">Regular</label>
-   <input id="track_bonus_reg" type="radio" name="track[bonus]" value="false"
+   <input id="track_bonus_reg" type="radio" name="track[bonus?]" value="false"
    <%= "checked" unless track.bonus? == "false" %>>
 
    <label for ="track_bonus">Bonus</label>
-   <input id="track_bonus" type="radio" name="track[bonus]" value="true"
+   <input id="track_bonus" type="radio" name="track[bonus?]" value="true"
    <%= "checked" if track.bonus? == "true" %>>
 
    <label for ="track_lyrics">Lyrics:</label>
-   <textarea id="track_lyrics" name="track[lyrics]">
-      <%= track.lyrics %></textarea>
+   <textarea id="track_lyrics" name="track[lyrics]"><%= track.lyrics %></textarea>
+   <input type="submit">
+   <% if track.persisted? %>
+      <input type ="reset">
+   <% end %>
 </form>
 
 
