@@ -1,5 +1,19 @@
 <h1><%= @album.title %></h1>
 <h3>by <%= link_to @artist.name, @artist %></h3>
+<table>
+   <tr>
+      <th>Type</th>
+      <td><%= @album.album_type %></td>
+   </tr>
+   <tr>
+      <th>Year</th>
+      <td><%= @album.year %></td>
+   </tr>
+   <tr>
+      <th>Recorded</th>
+      <td><%= @album.live? ? "Live" : "In the Studio" %></td>
+   </tr>
+</table>
 
 <% content_for :footer do %>
    <%= render "shared/nav", record_directory: [@artist, @album] %>
