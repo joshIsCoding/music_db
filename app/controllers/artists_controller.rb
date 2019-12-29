@@ -1,4 +1,5 @@
 class ArtistsController < ApplicationController
+   skip_before_action :require_login, only: :index
    def index
       @artists_album_count = Artist.left_outer_joins(:albums)
       .select("artists.*, COUNT(albums.id) AS album_count")
