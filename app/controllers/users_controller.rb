@@ -2,7 +2,8 @@ class UsersController < ApplicationController
    def create
       @user = User.new(user_params)
       if @user.save
-         login_user!(@user)
+         activation_msg = UserMailer.activation_email(@user)
+         activation_msg.deliver_now
          render :show
       else
          flash.now[:errors] = @user.errors.full_messages
