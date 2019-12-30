@@ -19,7 +19,7 @@
 
 <section class="lyrics">
    <h3>Lyrics<%= " - #{link_to "add lyrics", edit_track_url(@track)}".html_safe if @track.lyrics.empty? %></h3>
-   <p><%= @track.lyrics %></p>
+   <p><%= ugly_lyrics(@track.lyrics) %></p>
 </section>
 <%= button_to "Edit", edit_track_url(@track), method: "get" %>
 <%= button_to "Delete", track_url(@track), method: "delete" %>
