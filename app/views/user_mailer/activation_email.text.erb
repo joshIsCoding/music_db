@@ -1,0 +1,16 @@
+               WELCOME TO MusicApp!
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Thanks for registering for an account on MusicApp! 
+To activate your account and access our content, 
+please confirm your email by clicking the 
+activation link below. If you did not register 
+with MusicApp, you can just ignore this email.
+
+<%= link_to "Activate My Account!", activate_users_url( 
+activation_token: @user.activation_token), class: "activation_link" %>
+
+We can't wait to see you on the site!
+
+Best wishes,
+The MusicApp Team
