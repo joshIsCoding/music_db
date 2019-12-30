@@ -11,4 +11,14 @@ module TrackHelper
       trimmed
    end
 
+   def ugly_lyrics(lyrics)
+      ugly_lyrics = ""
+      lyrics.each_line do |line| 
+         # prepends a music note only if the line contains normal text
+         ugly_lyrics += "&#9835; " unless line.match?(/^(\s|\W)+$/)
+         ugly_lyrics += h(line) 
+      end
+      "<pre>#{ugly_lyrics}</pre>".html_safe
+   end
+
 end
