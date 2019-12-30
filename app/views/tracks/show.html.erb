@@ -17,10 +17,18 @@
    </tr>
 </table>
 
-<h3>Lyrics<%= " - #{link_to "add lyrics", edit_track_url(@track)}".html_safe if @track.lyrics.empty? %></h3>
-<p><%= @track.lyrics %></p>
+<section class="lyrics">
+   <h3>Lyrics<%= " - #{link_to "add lyrics", edit_track_url(@track)}".html_safe if @track.lyrics.empty? %></h3>
+   <p><%= ugly_lyrics(@track.lyrics) %></p>
+</section>
 <%= button_to "Edit", edit_track_url(@track), method: "get" %>
 <%= button_to "Delete", track_url(@track), method: "delete" %>
+
+<section class="notes">
+   <h3>Notes</h3>
+   <%= render "notes/notes", notes: @track_notes %>
+   <%= render "notes/form", track: @track %>
+</section>
 <% content_for :footer do %>
    <%= render "shared/nav", record_directory: [@track.artist, @track.album, @track] %>
 <% end %>
