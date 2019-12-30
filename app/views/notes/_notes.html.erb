@@ -1,0 +1,11 @@
+<% notes.each do |note| %>
+   <article class="note">
+      <header>
+         <h6>
+            Posted by <%= note.email %> on 
+            <time datetime="<%= note.created_at %>"><%= note.created_at %></time>
+         </h6>
+      </header>
+      <p><%= note.content %></p>
+   </article>
+<% end %>
