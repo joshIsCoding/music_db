@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
       nil
    end
 
+   def activate!(user)
+      user.toggle!(:activated) unless user.activated
+   end
+
    private 
    def require_login
       unless logged_in?
