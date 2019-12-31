@@ -17,6 +17,20 @@ class UsersController < ApplicationController
       render :new
    end
 
+   def activate
+      @user = User.find_by(activation_token: params[:activation_token])
+      if @user
+         unless @user.activated
+            activate!(@user)
+            flash[:info] = "Success! Your account has been activated."
+         end
+         redirect_to new_session_url
+      else
+         flash.now[:errors] = "Something went wrong. Please try re-registering."
+         render :new
+      end
+   end
+
    private
    def user_params
       params.require(:user).permit(:email, :password)
