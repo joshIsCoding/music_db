@@ -39,7 +39,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Configure default mail server
-  Rails.application.routes.default_url_options[:host] = 'domain.com'
+  Rails.application.routes.default_url_options[:host] = 'http://localhost:3000/'
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
