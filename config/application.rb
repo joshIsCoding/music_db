@@ -21,7 +21,7 @@ module MusicApp
         :view_specs => false,
         :helper_specs => false,
         :routing_specs => false,
-        :controller_specs => true,
+        :controller_specs => false,
         :request_specs => false
     end
   end
